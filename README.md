@@ -42,7 +42,7 @@ ref.current?.injectJavascript(generateOnMessageFunction(data));
 Initialize the bridge a WebView, and send messages !
 
 ```tsx
-import React, { useRef } from 'react';
+import React, { useEffect } from 'react';
 import { initializeWebViewBridge, sendMessageToReactNative } from "react-native-webview-utils";
 
 const Component = () => {
