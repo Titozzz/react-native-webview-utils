@@ -12,7 +12,7 @@ or
 yarn add react-native-webview-utils
 ```
 
-## Usage
+## Usage - from RN
 
 Instantiate a WebView, get a ref on it and pass it injectedJavascript
 
@@ -35,6 +35,25 @@ const Component = () => {
 Use the ref to send messages
 ```tsx
 ref.current?.injectJavascript(generateOnMessageFunction(data));
+```
+
+## Usage - from Web
+
+Initialize the bridge a WebView, and send messages !
+
+```tsx
+import React, { useRef } from 'react';
+import { initializeWebViewBridge, sendMessageToReactNative } from "react-native-webview-utils";
+
+const Component = () => {
+  useEffect(() => {
+    initializeWebViewBridge((data) => {
+      // Use data received from react native
+      console.log(data);
+    });
+    sendMessageToReactNative({Hello: "from web"});
+  }, [])
+}
 ```
 
 ## License
